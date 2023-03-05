@@ -1,5 +1,6 @@
 import React from 'react';
 import Tree from 'react-d3-tree';
+import './index.css'
 
 // example chart
 const db_chart = {
