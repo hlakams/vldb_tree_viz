@@ -79,7 +79,7 @@ const db_chart_3 = {
   children: [
     {
       name: "img.date = '2023-03-07'",
-      attributes: 'natural_join',
+      attributes: 'selection',
       children: [
         {
           name: 'match(passengers.pic, img.face) = True',
