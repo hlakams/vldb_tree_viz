@@ -53,12 +53,20 @@ function operation_symbol(op_id) {
   return symbol
 }
 
+function conditional_fill(nodeDatum) {
+  if (nodeDatum.children.length !== 0) {
+    return "white"
+  } else {
+    return "#5CA904"
+  };
+}
+
 // refer to:
 // https://stackoverflow.com/questions/69416200/add-image-to-react-d3-tree-rendercustomnodeelement-attribute
 const renderRectSvgNode = ({ nodeDatum, toggleNode}) => (
     <React.Fragment>
         <g>
-            <circle cx="0" cy="20" r="20" fill="white" onClick={toggleNode}/>
+            <circle cx="0" cy="20" r="20" fill={conditional_fill(nodeDatum)} onClick={toggleNode}/>
 
             {/* <foreignObject x='-20' y='0' width='40' height='40'> */}
             <text class='label' x="0em" y="1em" alignment-baseline="middle" position='fixed' text-anchor="middle">{operation_symbol(nodeDatum.attributes)}</text>      
