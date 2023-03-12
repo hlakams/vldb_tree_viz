@@ -12,16 +12,14 @@ code {
     monospace;
 }
 
-/* .card-so-wrapper{
-  width: 220px;
-  height: 70px;
-  background: #FFFFFF;
-  border: 1px solid rgba(0, 0, 0, 0.78);
-  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  border-radius: 3px;
-  position: absolute;
-  left: -110px;
-  display: flex;
-} */
+text.label {
+  font: bold 25px "Helvetica Neue", Helvetica, Arial, sans-serif;
+  line-height: 25px;
+  height:25px;
+  margin: none;
+  text-anchor: middle;
+  vertical-align: middle;
+  padding: none;
+}
 
 .rd3t-label { translate: -100px 33px !important; font-size: 13px; }

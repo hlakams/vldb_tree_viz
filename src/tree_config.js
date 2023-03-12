@@ -24,7 +24,7 @@ const db_chart = {
           },
           {
             name: "name LIKE '\\%Peter Derr\\%' ⋀ datebirth'1982-06-05' ⋀ country='UK'",
-            attributes: 'rename',
+            attributes: 'selection',
             children: [
               {
                 name: 'passengers',
@@ -55,24 +55,18 @@ function operation_symbol(op_id) {
 
 // refer to:
 // https://stackoverflow.com/questions/69416200/add-image-to-react-d3-tree-rendercustomnodeelement-attribute
-const renderRectSvgNode = ({ nodeDatum, toggleNode, 
-foreignObjectProps = {x:0, y:0, width:20, height:20} }) => (
+const renderRectSvgNode = ({ nodeDatum, toggleNode}) => (
     <React.Fragment>
         <g>
             <circle cx="0" cy="20" r="20" fill="white" onClick={toggleNode}/>
-            <foreignObject {...foreignObjectProps}>
-                <text fill="blue" strokeWidth="1" x="20" y='20'>
-                    {operation_symbol(nodeDatum.attributes)}
-                </text>
-            </foreignObject>
+
+            {/* <foreignObject x='-20' y='0' width='40' height='40'> */}
+            <text class='label' x="0em" y="1em" alignment-baseline="middle" position='fixed' text-anchor="middle">{operation_symbol(nodeDatum.attributes)}</text>      
+            {/* </foreignObject> */}
 
             <text fill="blue" strokeWidth="1" x="20">
                 {nodeDatum.name}
             </text>
-                {/* {nodeDatum.attributes && (
-            <text fill="green" x="20" dy="20" strokeWidth="1">
-                Operation: {nodeDatum.attributes}
-            </text>)} */}
         </g>
     </React.Fragment>
 );
