@@ -61,7 +61,7 @@ export const useCenteredTree = (defaultTranslate = { x: 0, y: 0 }) => {
 };
 
 // component render function
-export default function DatabaseTreeDisplay(db_schema) {
+function DatabaseTreeDisplay(db_schema) {
   const [translate, containerRef] = useCenteredTree();
   
   return (
@@ -80,3 +80,5 @@ export default function DatabaseTreeDisplay(db_schema) {
   </div>
   );
 }
+
+export default DatabaseTreeDisplay;
