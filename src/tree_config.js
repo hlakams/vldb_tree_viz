@@ -2,117 +2,13 @@ import React from 'react';
 import Tree from 'react-d3-tree';
 import './index.css'
 
-// example chart
-const db_chart_1 = {
-    name: 'img.location',
-    attributes: 'projection',
-    children: [
-      {
-        name: 'match(passengers.pic, img.face) = True',
-        attributes: 'natural_join',
-        children: [
-          {
-            name: 'img',
-            attributes: 'rename',
-            children: [
-              {
-                name: 'virtual_surveillance_images',
-                attributes: '',
-                children: []
-              },
-            ],
-          },
-          {
-            name: "name LIKE '\\%Peter Derr\\%' ⋀ datebirth'1982-06-05' ⋀ country='UK'",
-            attributes: 'selection',
-            children: [
-              {
-                name: 'passengers',
-                attributes: '',
-                children: []
-              },
-            ],
-          },
-        ],
-      },
-    ],
-};
-
-const db_chart_2 = {
-  name: 'img.date',
-  attributes: 'projection',
-  children: [
-    {
-      name: 'match(passengers.pic, img.face) = True',
-      attributes: 'natural_join',
-      children: [
-        {
-          name: 'img',
-          attributes: 'rename',
-          children: [
-            {
-              name: 'virtual_surveillance_images',
-              attributes: '',
-              children: []
-            },
-          ],
-        },
-        {
-          name: "name LIKE '\\%Peter Derr\\%' ⋀ datebirth'1982-06-05' ⋀ country='UK'",
-          attributes: 'selection',
-          children: [
-            {
-              name: 'passengers',
-              attributes: '',
-              children: []
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
-
-const db_chart_3 = {
-  name: 'img.location',
-  attributes: 'projection',
-  children: [
-    {
-      name: "img.date = '2023-03-07'",
-      attributes: 'selection',
-      children: [
-        {
-          name: 'match(passengers.pic, img.face) = True',
-          attributes: 'natural_join',
-          children: [
-            {
-              name: 'img',
-              attributes: 'rename',
-              children: [
-                {
-                  name: 'virtual_surveillance_images',
-                  attributes: '',
-                  children: []
-                },
-              ],
-            },
-            {
-              name: "name LIKE '\\%Peter Derr\\%' ⋀ datebirth'1982-06-05' ⋀ country='UK'",
-              attributes: 'selection',
-              children: [
-                {
-                  name: 'passengers',
-                  attributes: '',
-                  children: []
-                },
-              ],
-            },
-          ],
-        },
-      ],
-    },
-  ],
-};
+function conditional_fill(nodeDatum) {
+  if (nodeDatum.children.length !== 0) {
+    return "beige"
+  } else {
+    return "#5CA904"
+  };
+}
 
 function operation_symbol(op_id) {
   let symbol = ""
@@ -127,14 +23,6 @@ function operation_symbol(op_id) {
   };
 
   return symbol
-}
-
-function conditional_fill(nodeDatum) {
-  if (nodeDatum.children.length !== 0) {
-    return "beige"
-  } else {
-    return "#5CA904"
-  };
 }
 
 // refer to:
@@ -173,12 +61,12 @@ export const useCenteredTree = (defaultTranslate = { x: 0, y: 0 }) => {
 };
 
 // component render function
-export default function DatabaseTreeDisplay() {
+export default function DatabaseTreeDisplay(db_schema) {
   const [translate, containerRef] = useCenteredTree();
   
   return (
     <div style={{width: '100%', height: '100vh'}} ref={containerRef}>
-      <Tree data={db_chart_3}
+      <Tree data={db_schema}
         translate={translate}
         orientation={"vertical"}
         allowForeignObjects
