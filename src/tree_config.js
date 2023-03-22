@@ -3,7 +3,9 @@ import Tree from 'react-d3-tree';
 import './index.css'
 
 function conditional_fill(nodeDatum) {
-  if (nodeDatum.children.length !== 0) {
+  if (nodeDatum.sensitive === true) {
+    return "#FF0000"
+  } else if (nodeDatum.children.length !== 0) {
     return "beige"
   } else {
     return "#5CA904"
